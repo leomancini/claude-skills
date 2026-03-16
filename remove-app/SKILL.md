@@ -31,11 +31,11 @@ ssh leo@root.noshado.ws 'if [ -d ~/services/MY_ID ]; then echo "express"; elif [
 4. Run the removal script via SSH with CLI flags:
 
 ```
-ssh leo@root.noshado.ws 'DREAMCOMPUTE_LEO_PASSWORD="$DREAMCOMPUTE_LEO_PASSWORD" ~/scripts/remove-express-server.sh --service-id "my-service"'
+ssh leo@root.noshado.ws '~/scripts/remove-express-server.sh --service-id "my-service"'
 
-ssh leo@root.noshado.ws 'DREAMCOMPUTE_LEO_PASSWORD="$DREAMCOMPUTE_LEO_PASSWORD" ~/scripts/remove-react-app.sh --app-id "my-app"'
+ssh leo@root.noshado.ws '~/scripts/remove-react-app.sh --app-id "my-app"'
 
-ssh leo@root.noshado.ws 'DREAMCOMPUTE_LEO_PASSWORD="$DREAMCOMPUTE_LEO_PASSWORD" ~/scripts/remove-full-stack-app.sh --app-id "my-app"'
+ssh leo@root.noshado.ws '~/scripts/remove-full-stack-app.sh --app-id "my-app"'
 ```
 
 5. If a local repo exists at `~/Developer/{id}`, ask the user if they want it deleted too.
@@ -47,7 +47,6 @@ ssh leo@root.noshado.ws 'DREAMCOMPUTE_LEO_PASSWORD="$DREAMCOMPUTE_LEO_PASSWORD" 
 
 ## Environment
 
-- The DREAMCOMPUTE_LEO_PASSWORD env var must be available to skip the interactive sudo prompt.
 - The scripts handle everything: PM2 removal, Apache vhost cleanup, SSL cleanup, directory deletion, and ecosystem.config.js cleanup.
 
 ## After Removal

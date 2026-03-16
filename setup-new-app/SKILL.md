@@ -22,11 +22,11 @@ This skill provisions new web applications on the DreamCompute server (root.nosh
 3. For Express Server or Full Stack App: ask the user if they want to enable Anthropic API access. If yes, prompt for their API key. Then pass `--anthropic --anthropic-key <key>` to the setup script.
 4. Run the setup script via SSH with CLI flags:
 
-ssh leo@root.noshado.ws 'DREAMCOMPUTE_LEO_PASSWORD="$DREAMCOMPUTE_LEO_PASSWORD" ~/scripts/setup-new-express-server.sh --name "My Service" [--id my-service] [--domain my-service.noshado.ws]'
+ssh leo@root.noshado.ws '~/scripts/setup-new-express-server.sh --name "My Service" [--id my-service] [--domain my-service.noshado.ws]'
 
-ssh leo@root.noshado.ws 'DREAMCOMPUTE_LEO_PASSWORD="$DREAMCOMPUTE_LEO_PASSWORD" ~/scripts/setup-new-react-app.sh --name "My App" [--id my-app] [--domain my-app.leo.gd]'
+ssh leo@root.noshado.ws '~/scripts/setup-new-react-app.sh --name "My App" [--id my-app] [--domain my-app.leo.gd]'
 
-ssh leo@root.noshado.ws 'DREAMCOMPUTE_LEO_PASSWORD="$DREAMCOMPUTE_LEO_PASSWORD" ~/scripts/setup-new-full-stack-app.sh --name "My App" [--id my-app] [--domain my-app.leo.gd]'
+ssh leo@root.noshado.ws '~/scripts/setup-new-full-stack-app.sh --name "My App" [--id my-app] [--domain my-app.leo.gd]'
 
 5. Clone the repo into ~/Developer with git clone leo@root.noshado.ws:{apps_directory}/{id}
 
@@ -40,7 +40,6 @@ ssh leo@root.noshado.ws 'DREAMCOMPUTE_LEO_PASSWORD="$DREAMCOMPUTE_LEO_PASSWORD" 
 
 ## Environment
 
-- The DREAMCOMPUTE_LEO_PASSWORD env var must be available to skip the interactive sudo prompt. If it is not set, the script will prompt for the password interactively (which will not work over non-interactive SSH).
 - The scripts handle everything: directory creation, file scaffolding, npm install, PM2 setup, Apache vhost, SSL via Let's Encrypt, git repo initialization, and deploy hooks.
 
 ## After Setup
