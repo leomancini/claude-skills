@@ -27,7 +27,7 @@ Each project is a folder inside `projects/` containing:
     },
     "links": [
         {
-            "type": "github|document|download|gallery-sign|portfolio|3d_model|live-site",
+            "type": "github|portfolio|mobile|mobile_ios|mobile_android|desktop|live_site|link|video|article|patent|twitter|twitter_archive|download|slides|3d_model|storage|document|gallery-sign",
             "label": "Display Text or DEFAULT_FOR_TYPE",
             "icon": "DEFAULT_FOR_TYPE",
             "url": "https://..."
