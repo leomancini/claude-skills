@@ -5,7 +5,7 @@ description: This skill should be used when the user asks to "remove an app", "d
 
 # Remove App
 
-This skill removes web applications from the DreamCompute server (root.noshado.ws) by running removal scripts over SSH.
+This skill removes web applications from the DreamCompute server (root.noshado.ws) by running removal scripts over SSH. The server-side removal scripts do NOT touch the GitHub repo — the repo and its Actions workflow persist unless deleted separately.
 
 ## Available App Types
 
@@ -38,7 +38,13 @@ ssh leo@root.noshado.ws '~/scripts/remove-react-app.sh --app-id "my-app"'
 ssh leo@root.noshado.ws '~/scripts/remove-full-stack-app.sh --app-id "my-app"'
 ```
 
-5. If a local repo exists at `~/Developer/{id}`, ask the user if they want it deleted too.
+5. Ask the user if they also want to delete the GitHub repo at `leomancini/{id}` (the server-side scripts leave it intact, along with its Actions workflow and `DREAMCOMPUTE_DEPLOY_KEY` secret). If yes, run:
+
+```
+gh repo delete leomancini/{id} --yes
+```
+
+6. If a local repo exists at `~/Developer/{id}`, ask the user if they want it deleted too.
 
 ## CLI Flags
 
@@ -47,8 +53,12 @@ ssh leo@root.noshado.ws '~/scripts/remove-full-stack-app.sh --app-id "my-app"'
 
 ## Environment
 
-- The scripts handle everything: PM2 removal, Apache vhost cleanup, SSL cleanup, directory deletion, and ecosystem.config.js cleanup.
+- The server-side scripts handle: PM2 removal, Apache vhost cleanup, SSL cleanup, directory deletion, and ecosystem.config.js cleanup.
+- They do NOT delete: the GitHub repo, the GitHub Actions workflow, the deploy key secret, or any local clone in `~/Developer/{id}`.
 
 ## After Removal
 
-Report back to the user that the app has been removed from the server.
+Report back to the user:
+- The app has been removed from the server.
+- Whether the GitHub repo was also deleted (or note it still exists at https://github.com/leomancini/{id} if not).
+- Whether the local clone was deleted.
